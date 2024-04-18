@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Блаблалталка</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<!-- You have to put this piece of JavaScript code into your web page
+ <!-- You have to put this piece of JavaScript code into your web page
 Note: Use <!DOCTYPE html> on the page where snippet located for better rendering
 -->
-<link type="text/css" rel="stylesheet" href="https://tyucentos71.bugfocus.com/clientweb/chat-client-v4/css/form.css">
+<link type="text/css" rel="stylesheet" href="https://sin01.brightpattern.com/clientweb/chat-client-v4/css/form.css">
 <script type="text/javascript">
     SERVICE_PATTERN_CHAT_CONFIG = {
-        appId: '7441a1fa-4be1-408c-b314-69c337a36b9b',
-        apiUrl: 'https://tyucentos71.bugfocus.com/clientweb/api/v1',
-        tenantUrl: 'tyucentos71.bugfocus.com',
-        chatPath: 'https://tyucentos71.bugfocus.com/clientweb/chat-client-v4/',
-		parameters: {page: 'blabla'}
+        appId: '4e8642c8eb6b4870a51494843ae71d4f',
+        apiUrl: 'https://sin01.brightpattern.com/clientweb/api/v1',
+        tenantUrl: 'ascott.brightpattern.com',
+        chatPath: 'https://sin01.brightpattern.com/clientweb/chat-client-v4/',
+         autostartChat: false,
+         autostartVideocall: true
 
         /*        
          // Default customer data, it can be collected on current site's context
@@ -25,8 +27,33 @@ Note: Use <!DOCTYPE html> on the page where snippet located for better rendering
          phone_number: ''
  		*/
     };
+	
+function launch()
+{
+	snippetOpenChat(true);
+}
+
+function autoEnableVideo(){
+    var ifr = document.getElementById("sp-chat-iframe");
+    if(ifr){
+        var mute = ifr.contentWindow.document.getElementById("call-controls_mute-audio");
+        if(mute){
+            if(mute.classList.contains('off'))
+                call.click();
+        }
+        var video = ifr.contentWindow.document.getElementById("call-controls_mute-video");
+        if(video){
+            if(video.classList.contains('off'))
+                video.click();
+        }
+    }
+}
+ 
+setInterval(autoEnableVideo, 500);
+
 </script>
-<script src="https://tyucentos71.bugfocus.com/clientweb/chat-client-v4/js/init.js"></script> 
+<script src="https://sin01.brightpattern.com/clientweb/chat-client-v4/js/init.js"></script>    
+
+<button onclick="launch()" type="button" class="btn btn-primary btn-lg">Start Video Call</button>
 </body>
 </html>
- 
